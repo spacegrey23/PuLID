@@ -18,7 +18,7 @@ class HFEmbedder(nn.Module):
 
         self.hf_module = self.hf_module.eval().requires_grad_(False)
 
-    def forward(self, text: list[str]) -> Tensor:
+    def forward(self, text: str) -> Tensor:
         batch_encoding = self.tokenizer(
             text,
             truncation=True,

@@ -29,7 +29,7 @@ def get_noise(
     )
 
 
-def prepare(t5: HFEmbedder, clip: HFEmbedder, img: Tensor, prompt: str) -> dict[str, Tensor]:
+def prepare(t5: HFEmbedder, clip: HFEmbedder, img: Tensor, prompt: str):
     bs, c, h, w = img.shape
     if bs == 1 and not isinstance(prompt, str):
         bs = len(prompt)
@@ -81,7 +81,7 @@ def get_schedule(
     base_shift: float = 0.5,
     max_shift: float = 1.15,
     shift: bool = True,
-) -> list[float]:
+):
     # extra step for zero
     timesteps = torch.linspace(1, 0, num_steps + 1)
 
@@ -102,7 +102,7 @@ def denoise(
     txt: Tensor,
     txt_ids: Tensor,
     vec: Tensor,
-    timesteps: list[float],
+    timesteps: float,
     guidance: float = 4.0,
     id_weight=1.0,
     id=None,

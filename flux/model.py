@@ -24,7 +24,7 @@ class FluxParams:
     num_heads: int
     depth: int
     depth_single_blocks: int
-    axes_dim: list[int]
+    axes_dim: int
     theta: int
     qkv_bias: bool
     guidance_embed: bool

@@ -9,7 +9,7 @@ from flux.math import attention, rope
 
 
 class EmbedND(nn.Module):
-    def __init__(self, dim: int, theta: int, axes_dim: list[int]):
+    def __init__(self, dim: int, theta: int, axes_dim: int):
         super().__init__()
         self.dim = dim
         self.theta = theta
@@ -117,7 +117,7 @@ class Modulation(nn.Module):
         self.multiplier = 6 if double else 3
         self.lin = nn.Linear(dim, self.multiplier * dim, bias=True)
 
-    def forward(self, vec: Tensor) -> tuple[ModulationOut, ModulationOut]:
+    def forward(self, vec: Tensor):
         out = self.lin(nn.functional.silu(vec))[:, None, :].chunk(self.multiplier, dim=-1)
 
         return (
@@ -155,7 +155,7 @@ class DoubleStreamBlock(nn.Module):
             nn.Linear(mlp_hidden_dim, hidden_size, bias=True),
         )
 
-    def forward(self, img: Tensor, txt: Tensor, vec: Tensor, pe: Tensor) -> tuple[Tensor, Tensor]:
+    def forward(self, img: Tensor, txt: Tensor, vec: Tensor, pe: Tensor):
         img_mod1, img_mod2 = self.img_mod(vec)
         txt_mod1, txt_mod2 = self.txt_mod(vec)
 

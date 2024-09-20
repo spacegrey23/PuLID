@@ -100,7 +100,7 @@ configs = {
 }
 
 
-def print_load_warning(missing: list[str], unexpected: list[str]) -> None:
+def print_load_warning(missing: str, unexpected: str) -> None:
     if len(missing) > 0 and len(unexpected) > 0:
         print(f"Got {len(missing)} missing keys:\n\t" + "\n\t".join(missing))
         print("\n" + "-" * 79 + "\n")
