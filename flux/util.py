@@ -34,7 +34,7 @@ class ModelSpec:
 
 configs = {
     "flux-dev": ModelSpec(
-        repo_id="black-forest-labs/FLUX.1-dev",
+        repo_id="imagepipeline/flux",
         repo_flow="flux1-dev.safetensors",
         repo_ae="ae.safetensors",
         ckpt_path='models/flux1-dev.safetensors',

@@ -78,7 +78,7 @@ class QKNorm(torch.nn.Module):
         self.query_norm = RMSNorm(dim)
         self.key_norm = RMSNorm(dim)
 
-    def forward(self, q: Tensor, k: Tensor, v: Tensor) -> tuple[Tensor, Tensor]:
+    def forward(self, q: Tensor, k: Tensor, v: Tensor):
         q = self.query_norm(q)
         k = self.key_norm(k)
         return q.to(v), k.to(v)
